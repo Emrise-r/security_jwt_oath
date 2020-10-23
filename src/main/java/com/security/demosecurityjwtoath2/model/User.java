@@ -1,6 +1,8 @@
 package com.security.demosecurityjwtoath2.model;
 
-import net.minidev.json.annotate.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 import javax.persistence.*;
 import java.util.Set;
@@ -20,7 +22,6 @@ public class User {
 
     private String name;
 
-    @JsonIgnore
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -54,6 +55,8 @@ public class User {
         this.name = username;
     }
 
+    @JsonIgnore
+    @JsonProperty(value = "password")
     public String getPassword() {
         return password;
     }
